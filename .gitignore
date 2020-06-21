@@ -1,0 +1,15 @@
+/**/Final chords/
+/**/Useful connections/
+/**/Rocking OAuth/
+/**/Processing links/
+/**/Strings and fiddlesticks/
+
+*.class
+*out/
+*build/*
+*test/
+#yaml
+*.yaml
+
+# Log file
+*.log
