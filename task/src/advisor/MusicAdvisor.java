@@ -3,6 +3,7 @@ package advisor;
 import java.util.Scanner;
 
 public class MusicAdvisor {
+    boolean flag = false;
 
     public void getReco() {
         final Scanner scanner = new Scanner(System.in);
@@ -24,11 +25,20 @@ public class MusicAdvisor {
                 case "playlists mood":
                     getPlayMood();
                     break;
+                case "auth":
+                    getAuth();
+                    flag = true;
+                    break;
                 default:
                     break;
             }
         } while (!result.equalsIgnoreCase("exit"));
         System.out.println("---GOODBYE!---");
+    }
+
+    private void getAuth() {
+        System.out.println("https://accounts.spotify.com/authorize?client_id=20e82fb696f54ecd8506d918cc527815&redirect_uri=http://localhost:8080&response_type=code");
+        System.out.println("---SUCCESS---");
     }
 
     private void getPlayMood() {
@@ -48,19 +58,28 @@ public class MusicAdvisor {
     }
 
     private void getFeatured() {
-        System.out.println("---FEATURED---\n" +
-                "Mellow Morning\n" +
-                "Wake Up and Smell the Coffee\n" +
-                "Monday Motivation\n" +
-                "Songs to Sing in the Shower");
+
+        if (flag) {
+            System.out.println("---FEATURED---\n" +
+                    "Mellow Morning\n" +
+                    "Wake Up and Smell the Coffee\n" +
+                    "Monday Motivation\n" +
+                    "Songs to Sing in the Shower");
+        } else {
+            System.out.println("Please, provide access for application.");
+        }
     }
 
     private void getNew() {
-        System.out.println(
-                "---NEW RELEASES---\n" +
-                        "Mountains [Sia, Diplo, Labrinth]\n" +
-                        "Runaway [Lil Peep]\n" +
-                        "The Greatest Show [Panic! At The Disco]\n" +
-                        "All Out Life [Slipknot]\n");
+        if (flag) {
+            System.out.println(
+                    "---NEW RELEASES---\n" +
+                            "Mountains [Sia, Diplo, Labrinth]\n" +
+                            "Runaway [Lil Peep]\n" +
+                            "The Greatest Show [Panic! At The Disco]\n" +
+                            "All Out Life [Slipknot]\n");
+        } else {
+            System.out.println("Please, provide access for application.");
+        }
     }
 }
